@@ -18,4 +18,4 @@ const TodoModel = (sequelize, Sequelize) => {
 	});
 };
 
-module.exports = TodoModel;
+export default TodoModel;

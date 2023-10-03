@@ -1,22 +1,13 @@
-const express = require('express');
+import express from 'express';
+import controller from '../controller/Ctodo.js';
 const router = express.Router();
 
-router.get('/todos', (req, res) => {
-	console.log('get');
-});
+router.get('/todos', controller.get_todos);
 
-router.post('/todo', (req, res) => {
-	console.log(req.body);
-});
+router.post('/todo', controller.post_todo);
 
-router.patch('/todo/:todoId', (req, res) => {
-	console.log(req.body);
-	console.log(req.params.todoId);
-});
+router.patch('/todo/:todoId', controller.patch_todo);
 
-router.delete('/todo/:todoId', (req, res) => {
-	console.log(req.body);
-	console.log(req.params.todoId);
-});
+router.delete('/todo/:todoId', controller.delete_todo);
 
-module.exports = router;
+export default router;

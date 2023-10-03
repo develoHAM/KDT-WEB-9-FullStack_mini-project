@@ -1,14 +1,19 @@
 'use strict';
 
-const Sequelize = require('sequelize');
+import Sequelize from 'sequelize';
+import Config from '../config/config.js';
+import TodoModel from './Todo.js';
+
 const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
+
+const config = Config[env];
+
 const db = {};
 
 const sequelize = new Sequelize(config.database, config.username, config.password, config);
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-db.Todo = require('./Todo')(sequelize, Sequelize);
+db.Todo = TodoModel(sequelize, Sequelize);
 
-module.exports = db;
+export default db;
